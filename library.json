@@ -1,0 +1,20 @@
+{
+	"name": "IBT2-Library",
+	"frameworks": "Arduino",
+	"keywords": "IBT2 IBT_2 BTS7960",
+	"description": "Arduino library for IBT_2 motor driver module with current sensing",
+	"authors":
+	[
+		{
+			"name": "Andreas Trappmann",
+			"email": "andreas.trappmann@t-online.de",
+			"url": "https://github.com/ATrappmann/IBT2-Library",
+			"maintainer": true
+		}
+	],
+	"repository":
+	{
+		"type": "git",
+		"url": "https://github.com/ATrappmann/IBT2-Library"
+	}
+}
