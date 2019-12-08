@@ -13,7 +13,7 @@
 // Printing with stream operator
 template<class T> inline Print& operator <<(Print &obj, T arg) { obj.print(arg); return obj; }
 inline Print& operator <<(Print &obj, int arg) { obj.print(arg); return obj; }
-//inline Print& operator <<(Print &obj, float arg) { obj.print(arg, 4); return obj; }
+inline Print& operator <<(Print &obj, double arg) { obj.print(arg, 3); return obj; }
 
 #ifdef DEBUG
 #define LF  '\n'

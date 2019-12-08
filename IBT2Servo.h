@@ -45,8 +45,7 @@ private:
 public:
   IBT2Servo(const uint8_t EncoderPin1, const uint8_t EncoderPin2,
             const uint8_t RightPwmPin, const uint8_t LeftPwmPin, const uint8_t EnablePin,
-            const uint8_t RightPwmFeedbackPin, const uint8_t LeftPwmFeedbackPin, const uint8_t CurrentSensePin,
-            const uint8_t EffectiveCurrentSenseResistor = 1000);
+            const uint8_t Ris, const uint8_t EffectiveCurrentSenseResistor = 1000);
 
   long getPosition() const { return currentPosition; }
   bool moveToPosition(const long newPosition); // blocking until position is reached

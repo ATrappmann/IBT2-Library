@@ -1,6 +1,7 @@
 // NAME: IBT2.h
 //
-// DESC: IBT2 motor driver support
+// DESC: Library for IBT_2 modules with high current BTS7960 half bridge motor drivers.
+//       The library uses PWM and supports current sensing.
 //
 // This file is part of the IBT2-Library for the Arduino environment.
 //
@@ -32,20 +33,21 @@
 #include <Arduino.h>
 
 class IBT2 {
-private:
+public:
   uint8_t RPWM_PIN, LPWM_PIN;
   uint8_t EN_PIN;
 
-  uint8_t RPWM_FB_PIN, LPWM_FB_PIN;
-  uint8_t CS_PIN;
-  uint8_t effectiveRIS;
-  int absMaxAnalogSenseValue;
-
+  uint16_t Rintern;
+  uint16_t Rextern;
+  
+  uint16_t absMaxAnalogSenseValue;
+  
   int speed;
   uint8_t pwmFreq;
 
 public:
-  IBT2(const uint8_t RPWM_PIN, const uint8_t LPWM_PIN, const uint8_t EN_PIN);
+  IBT2(const uint8_t RPWM_pin, const uint8_t LPWM_pin, const uint8_t EN_pin, 
+       const uint16_t Rexternal, const uint16_t Rinternal = 10000);
 
   void enable() const;
   void disable() const;
@@ -53,7 +55,7 @@ public:
   bool setSpeed(const int speed);   // -255 to +255
   void stop();
 
-  void initCurrentSensing(const uint8_t RPWM_FB_PIN, const uint8_t LPWM_FB_PIN, const uint8_t CS_PIN, const uint8_t effRis);
+  void initCurrentSensing();
   double readCurrent() const;
 };
 
