@@ -23,7 +23,7 @@
 // However: my modules all had a 10Kohm resistor (103) on these pins which resulted
 // is a resistance of 5Kohm, if both pins are connected on a breadboard.
 // If the IBT_2 is signaling a fault condition, there can be up to 7mA on each of
-// the x_IS pins. Makeing it up to 14mA! This will exceed the allowed voltage of 5V 
+// the x_IS pins. Makeing it up to 14mA! This will exceed the allowed voltage of 5V
 // on the analog pins of an Arduino.
 //    U = Reff * Imax = 5000ohm * 14mA = 70V!
 // If this is the case, we need another resistor in parallel, to keep the
@@ -46,28 +46,34 @@
 //   PWM pin of the Arduino (i.e. pin 11) and another connection to another
 //   input of the OR-Gate (i.e. pin 2).
 // - Connect the output of the OR-Gate (i.e. pin 3) to the positive input of
-//   the Analog Comparator on pin 6.
-// - Connect 3.3V to the negative input of the Analog Comparator on pin 7.
+//   the Arduinos Analog Comparator on pin 6.
+// - Connect 3.3V to the negative input of the Arduinos Analog Comparator on pin 7.
 // - On the 74LS32 connect pin 7 to Ground and pin 14 to 5V.
 // - Connect R_EN and L_EN to the same row of the breadboard and from there
 //   to a digital pin of the Arduino (i.e. pin 12)
 // - Connect R_IS and L_IS to the same row of the breadboard and from there
 //   an 820ohm resistor to the ground column of the breadboard. Add a wire
 //   from the above breadboard row to an analog pin A0 of the Arduino.
-// - Define all pins and measure the effective resistance of both IS lines 
-//   in parallel with the external resistor against ground. Note the 
+// - Define all pins and measure the effective resistance of both IS lines
+//   in parallel with the external resistor against ground. Note the
 //   measured value in the #define statement below.
 //
 #ifndef HARDWARECONFIG_H
 #define HARDWARECONFIG_H
 
-// Pins 6 and 7 are used for the Analog Comparator
-// Pin A0 is used for Analog-to-Digital Conversion
+// Arduino pins 6 and 7 are fix. We will use the Analog Comparator!
+#define AIN0_PIN      6   // AC positive input
+#define AIN1_PIN      7   // AC negative input
+
+// Arduino pins that may be redefined
 #define ENCODER_PIN1  8
 #define ENCODER_PIN2  9
 #define RPWM_PIN      10    // 490Hz PWM
 #define LPWM_PIN      11    // 490Hz PWM
 #define EN_PIN        12
+
+// Arduino pin A0 is fix and will be used for Analog-to-Digital Conversion
+#define CURRENT_SENSE A0
 
 #define R_EXTERNAL    390 // ohm
 #define R_INTERNAL  10000 // ohm

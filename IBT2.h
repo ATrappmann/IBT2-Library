@@ -39,20 +39,20 @@ public:
 
   uint16_t Rintern;
   uint16_t Rextern;
-  
+
   uint16_t absMaxAnalogSenseValue;
-  
+
   int speed;
   uint8_t pwmFreq;
 
 public:
-  IBT2(const uint8_t RPWM_pin, const uint8_t LPWM_pin, const uint8_t EN_pin, 
+  IBT2(const uint8_t RPWM_pin, const uint8_t LPWM_pin, const uint8_t EN_pin,
        const uint16_t Rexternal, const uint16_t Rinternal = 10000);
 
   void enable() const;
   void disable() const;
 
-  bool setSpeed(const int speed);   // -255 to +255
+  bool setSpeed(const int16_t speed);   // -255 to +255
   void stop();
 
   void initCurrentSensing();
